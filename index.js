@@ -1,8 +1,19 @@
 const gridContainer = document.querySelector("#grid-container");
-const gridSizeInput = document.querySelector("#grid-size");
 const setGridSizeBtn = document.querySelector("#set-grid-size");
 const defaulGridCellPerRow = 16;
 const clearGridBtn = document.querySelector("#clear-grid");
+
+setGridSizeBtn.addEventListener("click", () => {
+    const setUserGridSize = prompt("Enter grid size 1 - 100");
+    if(isNaN(setUserGridSize) || (setUserGridSize <1 || setUserGridSize >100 )) {
+        alert("Error, size must be a number between 1 - 100");
+    }else {
+        setGrid(setUserGridSize);
+
+    }
+})
+
+
 
 
 const setGrid = (cellsPerRow) => {
@@ -23,7 +34,7 @@ const setGrid = (cellsPerRow) => {
     gridCells.forEach(cell => {
         cell.addEventListener("mouseover", () => {
             cell.style.backgroundColor = "red";
-        })  
+        })
     })
     clearGridBtn.addEventListener("click", () => {
         gridCells.forEach(cell => {
