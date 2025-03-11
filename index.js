@@ -2,6 +2,7 @@ const gridContainer = document.querySelector("#grid-container");
 const gridSizeInput = document.querySelector("#grid-size");
 const setGridSizeBtn = document.querySelector("#set-grid-size");
 const defaulGridCellPerRow = 16;
+const clearGridBtn = document.querySelector("#clear-grid");
 
 
 const setGrid = (cellsPerRow) => {
@@ -24,9 +25,15 @@ const setGrid = (cellsPerRow) => {
             cell.style.backgroundColor = "red";
         })  
     })
+    clearGridBtn.addEventListener("click", () => {
+        gridCells.forEach(cell => {
+            cell.style.backgroundColor = "white";
+        })
+    })
 }
 
 
 setGrid(defaulGridCellPerRow);
+
 
 
