@@ -5,16 +5,13 @@ const clearGridBtn = document.querySelector("#clear-grid");
 
 setGridSizeBtn.addEventListener("click", () => {
     const setUserGridSize = prompt("Enter grid size 1 - 100");
-    if(isNaN(setUserGridSize) || (setUserGridSize <1 || setUserGridSize >100 )) {
+    if (isNaN(setUserGridSize) || (setUserGridSize < 1 || setUserGridSize > 100)) {
         alert("Error, size must be a number between 1 - 100");
-    }else {
+    } else {
         setGrid(setUserGridSize);
 
     }
 })
-
-
-
 
 const setGrid = (cellsPerRow) => {
     gridContainer.innerHTML = "";
