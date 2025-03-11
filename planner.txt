@@ -1,0 +1,3 @@
+- create default grid for 16x16 square divs
+    - main container for game board
+        - grid cells 16 x16 to be inside container
