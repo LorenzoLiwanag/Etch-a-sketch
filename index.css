@@ -13,13 +13,18 @@ header {
 aside {
     display: grid;
     width:100px;
+    margin-left: 10vw;
+}  
+
+#gridCell-color {
+    width:100px;
 }
 
 
 #grid-container {
-    width: 85vw;
+    width: 50vw;
     border: 1px solid black;
-    height: 85vh;
+    height: 80vh;
     margin: auto;
     display: grid;
 }
