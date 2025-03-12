@@ -3,12 +3,16 @@ body {
 
 }
 
-header,
-aside {
+header {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
+}
+
+aside {
+    display: grid;
+    width:100px;
 }
 
 

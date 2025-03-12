@@ -4,9 +4,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const clearGridBtn = document.querySelector("#clear-grid");
     const colorSetterBtn = document.querySelector("#color-setter-btn");
     const gridCellColorElement = document.querySelector("#gridCell-color");
+    const eraserBtn = document.querySelector("#eraser-btn");
 
     let defaultGridCellPerRow = 16;
     let currentColor = "red"; // Default color
+    let eraserMode = false;
     let ismousedown = false;
 
     const setGrid = (cellsPerRow) => {
@@ -27,13 +29,15 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll(".grid-cell").forEach(cell => {
             cell.addEventListener("mousedown", () => {
                 ismousedown = true;
-                cell.style.backgroundColor = currentColor;
+                // cell.style.backgroundColor = currentColor;
+                eraserMode ? cell.style.backgroundColor = "white" : cell.style = currentColor;
             });
 
 
             cell.addEventListener("mouseover", () => {
                 if (ismousedown) {
-                    cell.style.backgroundColor = currentColor;
+                    // cell.style.backgroundColor = currentColor;
+                    cell.style.backgroundColor = eraserMode ? "white" : currentColor;
                 }
             });
     
@@ -65,6 +69,13 @@ document.addEventListener("DOMContentLoaded", () => {
     colorSetterBtn.addEventListener("click", () => {
         currentColor = gridCellColorElement.value;
     });
+
+
+    //eraser function
+    eraserBtn.addEventListener("click", () => {
+        eraserMode = !eraserMode;
+        eraserBtn.style.backgroundColor = eraserMode ? "yellow" : "";
+    })
 
     // Load the default grid
     setGrid(defaultGridCellPerRow);
