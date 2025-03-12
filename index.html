@@ -9,18 +9,22 @@
 </head>
 
 <body>
-    <header>
-
+    <header id="settings">
         <h1>Etch-a-Sketch</h1>
-        <button id="set-grid-size">Set size</button>
-        <button id="clear-grid">Clear</button>
+        <div id="board-functions">
+            <button id="set-grid-size">Set size</button>
+            <button id="clear-grid">Clear</button>
+        </div>
+        <div id="color-section">
+
+            <input type="color" id="gridCell-color">
+            <button id="color-setter-btn">Change Color</button>
+        </div>
+        <div id="mode-section">
+            <button id="random-color-mode-btn">Randomize color</button>
+            <button id="eraser-btn">Eraser</button>
+        </div>
     </header>
-    <aside id="settings">
-        <input type = "color" id="gridCell-color">
-        <button id="color-setter-btn">Change Color</button>
-        <button id="random-color-mode-btn">Randomize color</button>
-        <button id="eraser-btn">Eraser</button>
-    </aside>
     <div id="grid-container">
     </div>
 
