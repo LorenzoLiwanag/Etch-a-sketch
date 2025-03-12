@@ -12,10 +12,6 @@ header {
 }
 
 #settings {
-    /* display: grid;
-    width: 150px;
-    margin-left:5vw;
-    align-self: flex-start; */
     display: flex;
     justify-content:center;
     align-items: center;
@@ -36,7 +32,6 @@ header {
 
 button,#gridCell-color {
     width: 150px;
-    /* margin-top: 10px; */
 }
 
 

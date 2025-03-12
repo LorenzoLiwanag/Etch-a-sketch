@@ -64,9 +64,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Event to set a new grid size
     setGridSizeBtn.addEventListener("click", () => {
-        const setUserGridSize = parseInt(prompt("Enter grid size 1 - 100"));
-        if (isNaN(setUserGridSize) || setUserGridSize < 1 || setUserGridSize > 100) {
-            alert("Error, size must be a number between 1 - 100");
+        const setUserGridSize = parseInt(prompt("Enter grid size 1 - 150"));
+        if (isNaN(setUserGridSize) || setUserGridSize < 1 || setUserGridSize > 150) {
+            alert("Error, size must be a number between 1 - 150");
         } else {
             setGrid(setUserGridSize);
         }
