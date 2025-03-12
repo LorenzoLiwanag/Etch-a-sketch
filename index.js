@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let defaultGridCellPerRow = 16;
     let currentColor = "red"; // Default color
+    let ismousedown = false;
 
     const setGrid = (cellsPerRow) => {
         gridContainer.innerHTML = ""; // Clear the previous grid
@@ -23,10 +24,23 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         document.querySelectorAll(".grid-cell").forEach(cell => {
-            cell.addEventListener("mouseover", () => {
+            cell.addEventListener("mousedown", () => {
+                ismousedown = true;
                 cell.style.backgroundColor = currentColor;
             });
+
+
+            cell.addEventListener("mouseover", () => {
+                if (ismousedown) {
+                    cell.style.backgroundColor = currentColor;
+                }
+            });
+    
+            cell.addEventListener("mouseup", () => {
+                ismousedown = false;
+            });
         });
+
     };
 
     // Event to set a new grid size
