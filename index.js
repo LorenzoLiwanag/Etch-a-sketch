@@ -5,10 +5,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const colorSetterBtn = document.querySelector("#color-setter-btn");
     const gridCellColorElement = document.querySelector("#gridCell-color");
     const eraserBtn = document.querySelector("#eraser-btn");
+    const randomColorBtn = document.querySelector("#random-color-mode-btn");
+
+    const getRandomColor = () => `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+
 
     let defaultGridCellPerRow = 16;
     let currentColor = "red"; // Default color
     let eraserMode = false;
+    let randomColorMode = false;
     let ismousedown = false;
 
     const setGrid = (cellsPerRow) => {
@@ -30,7 +35,8 @@ document.addEventListener("DOMContentLoaded", () => {
             cell.addEventListener("mousedown", () => {
                 ismousedown = true;
                 // cell.style.backgroundColor = currentColor;
-                eraserMode ? cell.style.backgroundColor = "white" : cell.style = currentColor;
+                cell.style.backgroundColor = eraserMode ? "white" : currentColor;
+                cell.style.backgroundColor = randomColorMode ? getRandomColor() : currentColor;
             });
 
 
@@ -38,14 +44,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (ismousedown) {
                     // cell.style.backgroundColor = currentColor;
                     cell.style.backgroundColor = eraserMode ? "white" : currentColor;
+                    cell.style.backgroundColor = randomColorMode ? getRandomColor() : currentColor;
                 }
             });
-    
+
             cell.addEventListener("mouseup", () => {
                 ismousedown = false;
             });
         });
-
+        
     };
 
     // Event to set a new grid size
@@ -70,13 +77,16 @@ document.addEventListener("DOMContentLoaded", () => {
         currentColor = gridCellColorElement.value;
     });
 
-
     //eraser function
     eraserBtn.addEventListener("click", () => {
         eraserMode = !eraserMode;
         eraserBtn.style.backgroundColor = eraserMode ? "yellow" : "";
     })
 
+    randomColorBtn.addEventListener("click", () => {
+        randomColorMode = !randomColorMode;
+        randomColorBtn.style.backgroundColor = randomColorMode ? "yellow" : "";
+    })
     // Load the default grid
     setGrid(defaultGridCellPerRow);
 });
