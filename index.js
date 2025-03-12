@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
             gridContainer.appendChild(gridCell);
         }
 
+        //click and drag rather than hover to color
         document.querySelectorAll(".grid-cell").forEach(cell => {
             cell.addEventListener("mousedown", () => {
                 ismousedown = true;
