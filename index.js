@@ -30,21 +30,28 @@ document.addEventListener("DOMContentLoaded", () => {
             gridContainer.appendChild(gridCell);
         }
 
-        //click and drag rather than hover to color
         document.querySelectorAll(".grid-cell").forEach(cell => {
             cell.addEventListener("mousedown", () => {
                 ismousedown = true;
-                // cell.style.backgroundColor = currentColor;
-                cell.style.backgroundColor = eraserMode ? "white" : currentColor;
-                cell.style.backgroundColor = randomColorMode ? getRandomColor() : currentColor;
-            });
 
+                if (eraserMode) {
+                    cell.style.backgroundColor = "white";
+                } else if (randomColorMode) {
+                    cell.style.backgroundColor = getRandomColor();
+                } else {
+                    cell.style.backgroundColor = currentColor;
+                }
+            });
 
             cell.addEventListener("mouseover", () => {
                 if (ismousedown) {
-                    // cell.style.backgroundColor = currentColor;
-                    cell.style.backgroundColor = eraserMode ? "white" : currentColor;
-                    cell.style.backgroundColor = randomColorMode ? getRandomColor() : currentColor;
+                    if (eraserMode) {
+                        cell.style.backgroundColor = "white";
+                    } else if (randomColorMode) {
+                        cell.style.backgroundColor = getRandomColor();
+                    } else {
+                        cell.style.backgroundColor = currentColor;
+                    }
                 }
             });
 
@@ -52,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 ismousedown = false;
             });
         });
-        
+
     };
 
     // Event to set a new grid size
@@ -77,16 +84,31 @@ document.addEventListener("DOMContentLoaded", () => {
         currentColor = gridCellColorElement.value;
     });
 
-    //eraser function
+
     eraserBtn.addEventListener("click", () => {
-        eraserMode = !eraserMode;
-        eraserBtn.style.backgroundColor = eraserMode ? "yellow" : "";
-    })
+        if (!eraserMode) {
+            eraserMode = true;
+            randomColorMode = false;
+            eraserBtn.style.backgroundColor = "yellow";
+            randomColorBtn.style.backgroundColor = "";
+        } else {
+            eraserMode = false;
+            eraserBtn.style.backgroundColor = "";
+        }
+    });
 
     randomColorBtn.addEventListener("click", () => {
-        randomColorMode = !randomColorMode;
-        randomColorBtn.style.backgroundColor = randomColorMode ? "yellow" : "";
-    })
+        if (!randomColorMode) {
+            randomColorMode = true;
+            eraserMode = false;
+            randomColorBtn.style.backgroundColor = "yellow";
+            eraserBtn.style.backgroundColor = "";
+        } else {
+            randomColorMode = false;
+            randomColorBtn.style.backgroundColor = "";
+        }
+    });
+
     // Load the default grid
     setGrid(defaultGridCellPerRow);
 });
